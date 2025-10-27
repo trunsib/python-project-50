@@ -3,13 +3,13 @@ import os
 import json
 import yaml
 
-def get_dict_from_file(filepath):
-    path = Path(filepath)
+def get_dict_from_file(path_file):
+    path = Path(path_file)
     if not path.exists():
-        path = Path.cwd() / 'tests' / 'fixtures' / os.path.basename(filepath)
+        path = Path.cwd() / 'tests' / 'fixtures' / os.path.basename(path_file)
 
     if not path.exists():
-        raise FileNotFoundError(f"File not found: {filepath!s} (tried {path!s})")
+        raise FileNotFoundError(f"File not found: {path_file!s} (tried {path!s})")
 
     suffix = path.suffix.lower()
     with open(path, 'r') as f:
