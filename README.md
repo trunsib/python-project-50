@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/trunsib/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/trunsib/python-project-50/actions)
 
-<a href="https://sonarcloud.io/api/project_badges/measure?project=trunsib_python-project-50&metric=alert_status" /></a>
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=trunsib_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=trunsib_python-project-50)
 
 
 Сравнение плоских файлов (JSON)
