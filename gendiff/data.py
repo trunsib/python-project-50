@@ -1,21 +1,21 @@
+from pathlib import Path
 import os
 import json
 import yaml
-from pathlib import Path
 
+def get_dict_from_file(path_file):  
+    path = Path(path_file)
+    if not path.exists():
+        path = Path.cwd() / 'tests' / 'fixtures' / os.path.basename(path_file)
 
-def get_dict_from_file(path_file):
-    file_ext = Path(path_file).suffix
-    path_file = Path() / 'tests/fixtures' / os.path.basename(path_file)
-    with open(path_file) as f:
-        s = f.read()
-    return open_file(s, file_ext)
+    if not path.exists():
+        raise FileNotFoundError(f"File not found: {path_file!s} (tried {path!s})")
 
-
-def open_file(s, file_ext):
-    if file_ext.lower() == '.json':
-        return json.loads(s)
-    elif file_ext.lower() == '.yml' or file_ext.lower() == '.yaml':
-        return yaml.safe_load(s)
-    else:
-        raise ValueError('This file type is not supported')
+    suffix = path.suffix.lower()
+    with open(path, 'r') as f:
+        if suffix == '.json':
+            return json.load(f)
+        if suffix in ('.yml', '.yaml'):
+            return yaml.safe_load(f)
+        raise ValueError(f"Unsupported file format: {suffix}")
+    
