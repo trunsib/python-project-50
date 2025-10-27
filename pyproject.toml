@@ -33,4 +33,4 @@ build-backend = "hatchling.build"
 packages = ["gendiff"]
 
 [tool.uv.scripts]
-gendiff = "scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
