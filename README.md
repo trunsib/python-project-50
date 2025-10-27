@@ -3,6 +3,10 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=trunsib_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=trunsib_python-project-50)
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=trunsib_python-project-50)](https://sonarcloud.io/summary/new_code?id=trunsib_python-project-50)
+
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=trunsib_python-project-50)
+
 
 Сравнение плоских файлов (JSON)
 [![asciicast](https://asciinema.org/a/u5zPtYZLSC9jP3ZjKZYkn7R0K.svg)](https://asciinema.org/a/u5zPtYZLSC9jP3ZjKZYkn7R0K)
