@@ -10,5 +10,5 @@ def main():
     print(diff)
 
 
-if __name__ == '__maine__':
+if __name__ == '__main__':
     main()
