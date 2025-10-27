@@ -22,7 +22,7 @@ packages = [
   { include = "gendiff" },
 ]
 
-[tool.poetry.scripts]
+[tool.uv.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
 [build-system]
@@ -31,6 +31,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["gendiff"]
-
-[tool.uv.scripts]
-gendiff = "gendiff.scripts.gendiff:main"
