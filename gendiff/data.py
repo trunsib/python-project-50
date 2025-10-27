@@ -3,7 +3,7 @@ import os
 import json
 import yaml
 
-def get_dict_from_file(path_file):  
+def get_dict_from_file(path_file):
     path = Path(path_file)
     if not path.exists():
         path = Path.cwd() / 'tests' / 'fixtures' / os.path.basename(path_file)
@@ -18,4 +18,3 @@ def get_dict_from_file(path_file):
         if suffix in ('.yml', '.yaml'):
             return yaml.safe_load(f)
         raise ValueError(f"Unsupported file format: {suffix}")
-    
