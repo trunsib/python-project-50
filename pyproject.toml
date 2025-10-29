@@ -22,6 +22,9 @@ packages = [
   { include = "gendiff" },
 ]
 
+[project.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
 [tool.uv.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
