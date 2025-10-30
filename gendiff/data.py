@@ -5,7 +5,7 @@ import yaml
 
 
 def get_dict_from_file(path_file):
-  
+
     path = Path(path_file)
     if not path.exists():
         path = Path.cwd() / "tests" / "fixtures" / os.path.basename(path_file)

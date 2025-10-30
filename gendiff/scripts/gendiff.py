@@ -5,10 +5,11 @@ from gendiff.generate_diff import generate_diff
 
 
 def main():
-    path_file1, path_file2, format_name = parser_arg()
-    diff = generate_diff(path_file1, path_file2, format_name)
+    filepath1, filepath2, format_name = parser_arg()
+    diff = generate_diff(filepath1, filepath2, format_name)
     print(diff)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
+    
