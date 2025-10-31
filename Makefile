@@ -17,7 +17,7 @@ package-install:
 		python3 -m pip install --force-reinstall --user dist/*.whl
 
 lint:
-		uv run flake8
+		uv run flake8 gendiff
 
 selfcheck:
 		uv check
