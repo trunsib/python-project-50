@@ -25,7 +25,7 @@ packages = [
 [project.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
-[tool.uv.workspace.scripts]
+[tool.uv.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
 [build-system]
