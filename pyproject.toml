@@ -25,6 +25,9 @@ packages = [
 [project.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
 
+[tool.uv.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -36,14 +39,3 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["gendiff"]
-
-[tool.uv.workspace]
-members = ["code"]
-
-[tool.uv.dependency-groups]
-dev = ["ruff", "pytest"]
-
-[tool.ruff]
-line-length = 80
-select = ["E", "F", "W"]
-ignore = ["E203", "W503"]
