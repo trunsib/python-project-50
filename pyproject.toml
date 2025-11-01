@@ -14,18 +14,8 @@ packages = [
   { include = "gendiff" },
 ]
 
-[tool.poetry]
-name = "hexlet-code"
-version = "0.1.0"
-description = ""
-authors = ["trun <e.s.trunov@gmail.com>"]
-readme = "README.md"
-packages = [
-  { include = "gendiff" },
-]
-
 [project.scripts]
-gendiff = "gendiff.scripts.gendiff:main"
+gendiff = "gendiff.gendiff:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -33,7 +23,9 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "pytest>=8.4.2",
     "ruff>=0.14.3",
+    "flake8>=7.3.0",
 ]
 
 [tool.hatch.build.targets.wheel]
