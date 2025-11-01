@@ -1,30 +1,30 @@
 install:
-		uv install
+		poetry install
 
 gendiff:
-		uv run gendiff
+		poetry run gendiff
 
 test:
-		uv run pytest
+		poetry run pytest
 
 test-coverage:
-		uv run pytest --cov=gendiff --cov-report xml
+		poetry run pytest --cov=gendiff --cov-report xml
 
 publish:
-		uv publish --dry-run
+		poetry publish --dry-run
 
 package-install:
 		python3 -m pip install --force-reinstall --user dist/*.whl
 
 lint:
-		uv run flake8 gendiff
+		poetry run flake8
 
 selfcheck:
-		uv check
+		poetry check
 
 check: selfcheck test lint
 
 build: check
-		uv build
+		poetry build
 
 .PHONY: install test lint selfcheck check build
