@@ -38,6 +38,3 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["gendiff"]
-
-[tool.uv.dependency-groups.dev]
-dependencies = ["pytest", "ruff", "flake8"]
