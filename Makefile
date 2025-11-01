@@ -1,33 +1,33 @@
 install:
-		uv install
+	uv install
 
 gendiff:
-		uv run gendiff
+	uv run gendiff
 
 test:
-		uv run pytest
+	uv run pytest
 
 test-coverage:
-		uv run pytest --cov=gendiff --cov-report xml
+	uv run pytest --cov=gendiff --cov-report xml
 
 publish:
-		uv publish --dry-run
+	uv publish --dry-run
 
 package-install:
-		python3 -m pip install --force-reinstall --user dist/*.whl
+	python3 -m pip install --force-reinstall --user dist/*.whl
 
 lint:
-		uv run ruff check gendiff
+	uv run ruff check gendiff
 
 lint-fix:
-		uv run ruff check --fix gendiff
+	uv run ruff check --fix gendiff
 
 selfcheck:
-		uv check
+	uv check
 
 check: selfcheck test lint
 
 build: check
-		uv build
+	uv build
 
-.PHONY: install test lint selfcheck check build
+.PHONY: install test lint selfcheck check build lint-fix
