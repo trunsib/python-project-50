@@ -1,6 +1,6 @@
-from gendiff.formats.stylish import create_stylish
-from gendiff.formats.plain import create_plain
 from gendiff.formats.json import create_json
+from gendiff.formats.plain import create_plain
+from gendiff.formats.stylish import create_stylish
 
 
 def format_diff(l_diff, f_name):
