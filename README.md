@@ -23,3 +23,17 @@
 
 Вывод в JSON
 [![asciicast](https://asciinema.org/a/8AXnj175OlwVTsMAnStXfY3QI.svg)](https://asciinema.org/a/8AXnj175OlwVTsMAnStXfY3QI)
+
+Данный проект сравнивает две конфигурации данных и показывает их разницу.
+
+INSTALL
+
+```bash
+git clone https://github.com/trunsib/python-project-50.git
+
+make build
+
+make install
+
+make package-install
+```
