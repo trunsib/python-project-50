@@ -1,6 +1,6 @@
-from gendiff.data import get_dict_from_file
-from gendiff.diff import diff
-from gendiff.formats.format import format_diff
+from gendiff.scripts.parser import get_dict_from_file
+from gendiff.diff_builder import diff
+from gendiff.formattеrs.format import format_diff
 
 
 def generate_diff(path_file1, path_file2, format_name='stylish'):
