@@ -46,4 +46,4 @@ def сonvert_to_string(data):
         res = "'{}'".format(data)
     else:
         res = '{}'.format(data)
-    return res
+    return res + '\n' if res else '\n'

@@ -43,4 +43,4 @@ def сonvert_to_string(data, ind):
         res = 'null'
     else:
         res = str(data)
-    return res
+    return res + '\n'
