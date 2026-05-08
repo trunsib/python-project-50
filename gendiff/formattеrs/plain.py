@@ -1,49 +1,40 @@
-def create_plain(d_list):
-    d_list.sort(key=lambda x: x['name'])
-    res = get_diff_plain(d_list)
-    return '\n'.join(res)
+def create_plain(diff_list, parent=''):
+    """Format diff list to plain string format."""
+    lines = []
+    
+    for node in diff_list:
+        name = node['name']
+        current_path = f"{parent}.{name}" if parent else name
+        status = node['status']
+        
+        if status == 'nested':
+            result = create_plain(node['children'], current_path)
+            if result:
+                lines.append(result)
+        
+        elif status == 'added':
+            value = stringify_plain(node['data'])
+            lines.append(f"Property '{current_path}' was added with value: {value}")
+        
+        elif status == 'deleted':
+            lines.append(f"Property '{current_path}' was removed")
+        
+        elif status == 'changed':
+            old_value = stringify_plain(node['data before'])
+            new_value = stringify_plain(node['data after'])
+            lines.append(f"Property '{current_path}' was updated. From {old_value} to {new_value}")
+    
+    return '\n'.join(lines)
 
 
-def get_diff_plain(d_list, path=''):
-    res = []
-    for node in d_list:
-        path_to_ch = path + node['name']
-        match node['status']:
-            case 'nested':
-                path_to_ch += '.'
-                diff = get_diff_plain(node['children'], path_to_ch)
-                res.extend(diff)
-            case 'added':
-                ch = сonvert_to_string(node['data'])
-                diff = (f"Property '{path_to_ch}' was added "
-                        f"with value: {ch}")
-                res.append(diff)
-            case 'deleted':
-                ch = сonvert_to_string(node['data'])
-                diff = "Property '{}' was removed".format(path_to_ch)
-                res.append(diff)
-            case 'changed':
-                ch_bef = сonvert_to_string(node['data before'])
-                ch_aft = сonvert_to_string(node['data after'])
-                diff = (f"Property '{path_to_ch}' was updated. "
-                        f"From {ch_bef} to {ch_aft}")
-                res.append(diff)
-            case 'not changed':
-                continue
-            case _:
-                raise ValueError('Invalid type!')
-    return res
-
-
-def сonvert_to_string(data):
-    if type(data) is dict or type(data) is list:
-        res = '[complex value]'
-    elif data is False or data is True:
-        res = str(data).lower()
-    elif data is None:
-        res = 'null'
-    elif type(data) is str:
-        res = "'{}'".format(data)
-    else:
-        res = '{}'.format(data)
-    return res + '\n' if res else '\n'
+def stringify_plain(value):
+    """Convert a value to string representation for plain format."""
+    if isinstance(value, dict):
+        return '[complex value]'
+    if isinstance(value, bool):
+        return str(value).lower()
+    if value is None:
+        return 'null'
+    if isinstance(value, str):
+        return f"'{value}'"
+    return str(value)

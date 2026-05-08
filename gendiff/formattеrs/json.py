@@ -1,5 +1,5 @@
 import json
 
-
-def create_json(d_list):
-    return json.dumps(d_list, indent=4) + '\n'
+def create_json(diff_list):
+    """Convert diff list to JSON string."""
+    return json.dumps(diff_list, indent=4)
