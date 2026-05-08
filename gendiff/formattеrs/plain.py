@@ -15,7 +15,7 @@ def create_plain(diff_list, parent=''):
         elif status == 'added':
             value = stringify_plain(node['data'])
             lines.append(
-                f"Property '{current_path}'was added with value: {
+                f"Property '{current_path}' was added with value: {
                     value}")
         
         elif status == 'deleted':
