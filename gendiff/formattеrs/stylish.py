@@ -1,7 +1,7 @@
 def create_stylish(diff_list, depth=0):
     """Format diff list to stylish string format."""
     indent = '    ' * depth
-    inner_indent = '    ' * (depth + 1)
+    current_indent = indent + '    '
     
     lines = ['{']
     
@@ -10,43 +10,40 @@ def create_stylish(diff_list, depth=0):
         status = node['status']
         
         if status == 'nested':
-            children_str = create_stylish(node['children'], depth + 1)
-            lines.append(f"{inner_indent}{name}: {children_str}")
+            value = create_stylish(node['children'], depth + 1)
+            lines.append(f"{current_indent}{name}: {value}")
         
         elif status == 'added':
-            value = stringify_value(node['data'], depth + 1)
-            lines.append(f"{inner_indent}+ {name}: {value}")
+            value = stringify_value(node['data'])
+            lines.append(f"{current_indent}+ {name}: {value}")
         
         elif status == 'deleted':
-            value = stringify_value(node['data'], depth + 1)
-            lines.append(f"{inner_indent}- {name}: {value}")
+            value = stringify_value(node['data'])
+            lines.append(f"{current_indent}- {name}: {value}")
         
         elif status == 'changed':
-            old_value = stringify_value(node['data before'], depth + 1)
-            new_value = stringify_value(node['data after'], depth + 1)
-            lines.append(f"{inner_indent}- {name}: {old_value}")
-            lines.append(f"{inner_indent}+ {name}: {new_value}")
+            old_value = stringify_value(node['data before'])
+            new_value = stringify_value(node['data after'])
+            lines.append(f"{current_indent}- {name}: {old_value}")
+            lines.append(f"{current_indent}+ {name}: {new_value}")
         
         elif status == 'not changed':
-            value = stringify_value(node['data'], depth + 1)
-            lines.append(f"{inner_indent}  {name}: {value}")
+            value = stringify_value(node['data'])
+            lines.append(f"{current_indent}  {name}: {value}")
     
     lines.append(f"{indent}}}")
-    result = '\n'.join(lines)
-    return result
+    return '\n'.join(lines)
 
 
-def stringify_value(value, depth=0):
-    """Convert a value to string representation for stylish format."""
+def stringify_value(value):
+    """Convert a value to string representation."""
     if isinstance(value, dict):
         if not value:
             return '{}'
-        indent = '    ' * depth
-        inner_indent = '    ' * (depth + 1)
         lines = ['{']
         for k, v in sorted(value.items()):
-            lines.append(f"{inner_indent}{k}: {stringify_value(v, depth + 1)}")
-        lines.append(f"{indent}}}")
+            lines.append(f"    {k}: {stringify_value(v)}")
+        lines.append('}')
         return '\n'.join(lines)
     
     if isinstance(value, bool):
