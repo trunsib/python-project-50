@@ -25,7 +25,8 @@ def create_plain(diff_list, parent=''):
             old_value = stringify_plain(node['data before'])
             new_value = stringify_plain(node['data after'])
             lines.append(
-                f"Property '{current_path}' was updated. From {old_value} to {new_value}")
+                f"Property '{current_path}' was updated. From {
+                    old_value} to {new_value}")
     
     return '\n'.join(lines)
 
