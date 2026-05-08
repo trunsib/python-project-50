@@ -14,36 +14,39 @@ def create_stylish(diff_list, depth=0):
             lines.append(f"{current_indent}{name}: {value}")
         
         elif status == 'added':
-            value = stringify_value(node['data'])
+            value = stringify_value(node['data'], depth + 1)
             lines.append(f"{current_indent}+ {name}: {value}")
         
         elif status == 'deleted':
-            value = stringify_value(node['data'])
+            value = stringify_value(node['data'], depth + 1)
             lines.append(f"{current_indent}- {name}: {value}")
         
         elif status == 'changed':
-            old_value = stringify_value(node['data before'])
-            new_value = stringify_value(node['data after'])
+            old_value = stringify_value(node['data before'], depth + 1)
+            new_value = stringify_value(node['data after'], depth + 1)
             lines.append(f"{current_indent}- {name}: {old_value}")
             lines.append(f"{current_indent}+ {name}: {new_value}")
         
         elif status == 'not changed':
-            value = stringify_value(node['data'])
+            value = stringify_value(node['data'], depth + 1)
             lines.append(f"{current_indent}  {name}: {value}")
     
     lines.append(f"{indent}}}")
     return '\n'.join(lines)
 
 
-def stringify_value(value):
-    """Convert a value to string representation."""
+def stringify_value(value, depth=0):
+    """Convert a value to string representation with proper indentation."""
+    indent = '    ' * depth
+    current_indent = indent + '    '
+    
     if isinstance(value, dict):
         if not value:
             return '{}'
         lines = ['{']
         for k, v in sorted(value.items()):
-            lines.append(f"    {k}: {stringify_value(v)}")
-        lines.append('}')
+            lines.append(f"{current_indent}{k}: {stringify_value(v, depth + 1)}")
+        lines.append(f"{indent}}}")
         return '\n'.join(lines)
     
     if isinstance(value, bool):
