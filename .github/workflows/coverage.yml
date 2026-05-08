@@ -29,5 +29,4 @@ jobs:
           args: >
             -Dsonar.organization=trunsib
             -Dsonar.projectKey=trunsib_python-project-50
-            -Dsonar.qualitygate.wait=true
             -Dsonar.python.version=3.11
