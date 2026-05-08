@@ -1,5 +1,5 @@
 import pytest
-from gendiff.generate_diff import generate_diff
+from gendiff.scripts.generate_diff import generate_diff
 from pathlib import Path
 
 
