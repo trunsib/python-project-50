@@ -15,6 +15,6 @@ from pathlib import Path
     ]
 )
 def test_generate_diff(filepath1, filepath2, file_answer, form_name):
-    with open(Path() / 'tests/fixtures' / file_answer) as f:
+    with open(Path() / 'tests/test_data' / file_answer) as f:
         corr_answer = f.read()
     assert generate_diff(filepath1, filepath2, form_name) == corr_answer
