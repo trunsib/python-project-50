@@ -22,7 +22,9 @@
                 "name": "setting3",
                 "status": "changed",
                 "data before": true,
-                "data after": null
+                "data after": {
+                    "key": "value"
+                    }
             },
             {
                 "name": "setting4",
