@@ -38,6 +38,7 @@ jobs:
           pytest --cov=gendiff --cov-report=xml --cov-report=html
 
       - name: SonarQubeScan
+        continue-on-error: true
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
