@@ -38,7 +38,7 @@ def сonvert_to_string(data, ind):
             res = res + ind + '  ' + key + ': ' + value + '\n'
         res = res + ind[:-2] + '}'
     elif data is False or data is True:
-        res = str(value).lower()
+        res = str(data).lower()
     elif data is None:
         res = 'null'
     else:
