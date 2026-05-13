@@ -36,3 +36,15 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest --cov=gendiff --cov-report=xml --cov-report=html
+
+      - name: SonarQubeScan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=lyovaparsyan94_python-project-50
+            -Dsonar.organization=lyovaparsyan94
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.coverage.exclusions=tests/**
+            -Dsonar.exclusions=tests/**
