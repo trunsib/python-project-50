@@ -3,6 +3,9 @@ from gendiff.scripts.generate_diff import generate_diff
 from pathlib import Path
 
 
+test_data = Path(__file__).parent / 'test_data'
+
+
 @pytest.mark.parametrize(
     "filepath1, filepath2, file_answer, form_name",
     [
@@ -15,6 +18,9 @@ from pathlib import Path
     ]
 )
 def test_generate_diff(filepath1, filepath2, file_answer, form_name):
-    with open(Path() / 'tests/test_data' / file_answer) as f:
+    path1 = test_data / filepath1
+    path2 = test_data / filepath2
+
+    with open(test_data / file_answer) as f:
         corr_answer = f.read()
-    assert generate_diff(filepath1, filepath2, form_name) == corr_answer
+    assert generate_diff(str(path1), str(path2), form_name) == corr_answer
