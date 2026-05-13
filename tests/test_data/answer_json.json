@@ -1,110 +1,92 @@
-[
-    {
-        "name": "common",
-        "status": "nested",
-        "children": [
-            {
-                "name": "follow",
-                "status": "added",
-                "data": false
+{
+    "common": {
+        "type": "chained",
+        "value": {
+            "follow": {
+                "type": "added",
+                "value": false
             },
-            {
-                "name": "setting1",
-                "status": "not changed",
-                "data": "Value 1"
+            "setting1": {
+                "type": "unchanged",
+                "value": "Value 1"
             },
-            {
-                "name": "setting2",
-                "status": "deleted",
-                "data": 200
+            "setting2": {
+                "type": "deleted",
+                "value": 200
             },
-            {
-                "name": "setting3",
-                "status": "changed",
-                "data before": true,
-                "data after": null
+            "setting3": {
+                "type": "changed",
+                "old_value": true,
+                "new_value": null
             },
-            {
-                "name": "setting4",
-                "status": "added",
-                "data": "blah blah"
+            "setting4": {
+                "type": "added",
+                "value": "blah blah"
             },
-            {
-                "name": "setting5",
-                "status": "added",
-                "data": {
+            "setting5": {
+                "type": "added",
+                "value": {
                     "key5": "value5"
                 }
             },
-            {
-                "name": "setting6",
-                "status": "nested",
-                "children": [
-                    {
-                        "name": "doge",
-                        "status": "nested",
-                        "children": [
-                            {
-                                "name": "wow",
-                                "status": "changed",
-                                "data before": "",
-                                "data after": "so much"
+            "setting6": {
+                "type": "chained",
+                "value": {
+                    "doge": {
+                        "type": "chained",
+                        "value": {
+                            "wow": {
+                                "type": "changed",
+                                "old_value": "",
+                                "new_value": "so much"
                             }
-                        ]
+                        }
                     },
-                    {
-                        "name": "key",
-                        "status": "not changed",
-                        "data": "value"
+                    "key": {
+                        "type": "unchanged",
+                        "value": "value"
                     },
-                    {
-                        "name": "ops",
-                        "status": "added",
-                        "data": "vops"
+                    "ops": {
+                        "type": "added",
+                        "value": "vops"
                     }
-                ]
+                }
             }
-        ]
+        }
     },
-    {
-        "name": "group1",
-        "status": "nested",
-        "children": [
-            {
-                "name": "baz",
-                "status": "changed",
-                "data before": "bas",
-                "data after": "bars"
+    "group1": {
+        "type": "chained",
+        "value": {
+            "baz": {
+                "type": "changed",
+                "old_value": "bas",
+                "new_value": "bars"
             },
-            {
-                "name": "foo",
-                "status": "not changed",
-                "data": "bar"
+            "foo": {
+                "type": "unchanged",
+                "value": "bar"
             },
-            {
-                "name": "nest",
-                "status": "changed",
-                "data before": {
+            "nest": {
+                "type": "changed",
+                "old_value": {
                     "key": "value"
                 },
-                "data after": "str"
+                "new_value": "str"
             }
-        ]
+        }
     },
-    {
-        "name": "group2",
-        "status": "deleted",
-        "data": {
+    "group2": {
+        "type": "deleted",
+        "value": {
             "abc": 12345,
             "deep": {
                 "id": 45
             }
         }
     },
-    {
-        "name": "group3",
-        "status": "added",
-        "data": {
+    "group3": {
+        "type": "added",
+        "value": {
             "deep": {
                 "id": {
                     "number": 45
@@ -113,4 +95,4 @@
             "fee": 100500
         }
     }
-]
+}
