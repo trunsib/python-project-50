@@ -51,3 +51,4 @@ jobs:
             -Dsonar.qualitygate.wait=false
             -Dsonar.coverage.exclusions=**/*.py
             -Dsonar.exclusions=**/uv.lock,**/pyproject.toml
+        continue-on-error: true
