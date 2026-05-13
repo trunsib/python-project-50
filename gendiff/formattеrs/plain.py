@@ -5,25 +5,25 @@ def create_plain(diff_list, parent=''):
     for node in diff_list:
         name = node['name']
         current_path = f"{parent}.{name}" if parent else name
-        status = node['status']
+        type = node['type']
         
-        if status == 'nested':
+        if type == 'nested':
             result = create_plain(node['children'], current_path)
             if result:
                 lines.append(result)
         
-        elif status == 'added':
-            value = stringify_plain(node['data'])
+        elif type == 'added':
+            value = stringify_plain(node['value'])
             msg = "Property '" + current_path
             msg += "' was added with value: " + value
             lines.append(msg)
         
-        elif status == 'deleted':
+        elif type == 'deleted':
             lines.append("Property '" + current_path + "' was removed")
         
-        elif status == 'changed':
-            old_value = stringify_plain(node['data before'])
-            new_value = stringify_plain(node['data after'])
+        elif type == 'changed':
+            old_value = stringify_plain(node['old_value'])
+            new_value = stringify_plain(node['new_value'])
             msg = "Property '" + current_path
             msg += "' was updated. From " + old_value
             msg += " to " + new_value
