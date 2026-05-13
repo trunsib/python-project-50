@@ -39,7 +39,7 @@ jobs:
 
       - name: SonarQubeScan
         continue-on-error: true
-        uses: SonarSource/sonarqube-scan-action@0400d5f644dc74513175e3cd8d07132dd4860809
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
