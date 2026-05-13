@@ -48,3 +48,4 @@ jobs:
             -Dsonar.projectKey=trunsib_python-project-50
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.python.version=3.11
+            -Dsonar.qualitygate.wait=false
