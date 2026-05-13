@@ -49,3 +49,5 @@ jobs:
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.python.version=3.11
             -Dsonar.qualitygate.wait=false
+            -Dsonar.coverage.exclusions=**/*.py
+            -Dsonar.exclusions=**/uv.lock,**/pyproject.toml
